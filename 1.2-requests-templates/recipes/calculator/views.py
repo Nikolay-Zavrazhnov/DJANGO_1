@@ -1,4 +1,7 @@
-from django.shortcuts import render
+
+from django.http import HttpResponse
+from django.shortcuts import render, reverse
+
 
 DATA = {
     'omlet': {
@@ -28,3 +31,49 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def omlet_views(request):
+    vol_pers = int(request.GET.get("servings", 1))
+    context = {
+      'recipe': {
+          'omlet': {
+              'яйца, шт': 2 * vol_pers,
+        'молоко, л': 0.1 * vol_pers,
+        'соль, ч.л.': 0.5 * vol_pers,
+          }
+      }
+    }
+    template_name = 'calculator/index.html'
+    return render(request, template_name, context)
+
+def pasta_views(request):
+    vol_pers = int(request.GET.get("servings", 1))
+    context = {
+      'recipe': {
+          'pasta': {
+        'макароны, г': 0.3 * vol_pers,
+        'сыр, г': 0.05 * vol_pers,
+        }
+      }
+    }
+    template_name = 'calculator/index.html'
+    return render(request, template_name, context)
+
+def buter_views(request):
+    vol_pers = int(request.GET.get("servings", 1))
+    context = {
+      'recipe': {
+          'buter': {
+        'хлеб, ломтик': 1 * vol_pers,
+        'колбаса, ломтик': 1 * vol_pers,
+        'сыр, ломтик': 1 * vol_pers,
+        'помидор, ломтик': 1 * vol_pers,
+          }
+      }
+    }
+    template_name = 'calculator/index.html'
+    return render(request, template_name, context)
+
+
+

@@ -6,7 +6,10 @@
 </head>
 <body>
 {% for ingredient, amount in recipe.items %}
-    <p>{{ ingredient }}: {{ amount }}</p>
+    {{ ingredient }}:
+    {% for ing, val in amount.items %}
+        <p>{{ ing }} {{ val }} </p>
+    {% endfor %}
 {% empty %}
     <p>Такого рецепта не знаю :(</p>
 {% endfor %}

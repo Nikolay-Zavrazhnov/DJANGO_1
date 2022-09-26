@@ -38,6 +38,3 @@ class Scope(models.Model):
 
     class Meta:
         ordering = ['-is_main', 'tag']
-
-
-

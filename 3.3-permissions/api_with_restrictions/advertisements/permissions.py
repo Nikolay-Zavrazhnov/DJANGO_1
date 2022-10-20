@@ -8,7 +8,3 @@ class IsOwnerOrReadOnly(BasePermission):
             return True
         else:
             return request.user == obj.creator
-
-
-
-
